@@ -19,10 +19,11 @@
 巡礼中、巡礼前後（記録としても使用できるようにするため）
 
 ## 設計書
-後ほど追加
+順次追加予定<br>
+https://drive.google.com/file/d/1vf8OLPH-3kLNgnF4SnIATCNqGT7btBAm/view?usp=sharing
 
 ## チャレンジ要素一覧
-<https://docs.google.com/spreadsheets/d/124H8kjkNYnvly0JQo-LIfYhhaLAnFewRxiQ6UBB1vbc/edit?usp=sharing>
+https://docs.google.com/spreadsheets/d/124H8kjkNYnvly0JQo-LIfYhhaLAnFewRxiQ6UBB1vbc/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
