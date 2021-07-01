@@ -19,7 +19,7 @@
 巡礼中、巡礼前後（記録としても使用できるようにするため）
 
 ## 設計書
-<...>
+後ほど追加
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/124H8kjkNYnvly0JQo-LIfYhhaLAnFewRxiQ6UBB1vbc/edit?usp=sharing>
