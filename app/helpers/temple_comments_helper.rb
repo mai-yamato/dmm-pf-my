@@ -1,0 +1,2 @@
+module TempleCommentsHelper
+end

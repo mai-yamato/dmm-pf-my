@@ -10,6 +10,45 @@
   </head>
 
   <body>
+
+    <header>
+　　<div class="logo">
+    　　<%#= image_tag "logo1.jpg" %>
+    　　<% end %>
+　　</div>
+
+    <div class="navbar_list">
+      <ul class="navbar">
+      　<%# if user_signed_in? %>
+
+          <%= "ようこそ、" %><%#= current_end_user.full_name %><%= "さん！！" %>
+
+          <li><%= link_to ' Home',root_path(current_user) %></li>
+          <li><%= link_to ' ログアウト', destroy_end_user_session_path, method: :delete %></li>
+        <% else %>
+
+        <!--ログインしてないとき-->
+
+          <li><%= link_to ' Hone', root_path %></li>
+          <li><%= link_to ' About', _path %></li>
+          <li><%= link_to ' 新規登録', new_end_user_registration_path %></li>
+          <li><%= link_to ' ログイン', new_end_user_session_path %></li>
+        <% end %>
+    　</ul>
+　　</div>
+　</header>
+
+　<footer>
+  <div class='container mt-5'>
+    <div class='row'>
+      <div class='mx-auto'>
+        <p>CopyRight Infratop.inc</p>
+      </div>
+    </div>
+  </div>
+　</footer>
+
+
     <%= yield %>
   </body>
 </html>
