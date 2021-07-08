@@ -1,0 +1,2 @@
+class TempleCommentsController < ApplicationController
+end
