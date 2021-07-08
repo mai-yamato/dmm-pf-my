@@ -10,11 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_07_064703) do
+ActiveRecord::Schema.define(version: 2021_07_08_115948) do
 
   create_table "temples", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "temple_id"
+    t.string "temple_name"
+    t.string "temple_image"
+    t.integer "temple_number"
+    t.string "prefecture"
   end
 
   create_table "users", force: :cascade do |t|
@@ -26,6 +31,9 @@ ActiveRecord::Schema.define(version: 2021_07_07_064703) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "profile_image"
+    t.text "introduction"
+    t.boolean "user_status", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

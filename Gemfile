@@ -75,4 +75,7 @@ gem 'font-awesome-sass'
 
 gem 'rspec-rails'
 
-
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
