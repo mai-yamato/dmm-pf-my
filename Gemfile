@@ -67,7 +67,7 @@ gem 'kaminari'
 
 gem 'pry-byebug'
 
-gem 'bootstrap'
+gem 'bootstrap', '~> 4.5'
 
 gem 'jquery-rails'
 
