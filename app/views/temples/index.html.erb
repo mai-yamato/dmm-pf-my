@@ -1,0 +1,28 @@
+<%= form_with model:@temple, local:true do |f| %>
+<div>
+  <%= f.label :prefecture, "県" %>
+  <%= f.text_field :prefecture, class: 'form-control temple_prefecture' %>
+</div>
+<div>
+  <%= f.label :number, "札所番号" %>
+  <%= f.text_field :temple_number, class: 'form-control temple_number' %>
+</div>
+<div>
+  <%= f.label :name, "お寺の名前" %>
+  <%= f.text_field :temple_name, class: 'form-control temple_name' %>
+</div>
+<div>
+  <%= f.label :image, "画像" %>
+  <%= f.file_field :temple_image %>
+</div>
+<%= f.submit %>
+<% end %>
+
+<div>
+  <% @temples.each do |temple| %>
+  <%= temple.prefecture %>
+  <%= temple.temple_number %>
+  <%= temple.temple_name %>
+  <%= temple.temple_image %>
+  <% end %>
+</div>
