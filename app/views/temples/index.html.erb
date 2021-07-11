@@ -22,7 +22,7 @@
   <% @temples.each do |temple| %>
   <%= temple.prefecture %>
   <%= temple.temple_number %>
-  <%= temple.temple_name %>
+  <%= link_to temple.temple_name, temple_path(temple) %>
   <%= temple.temple_image %>
   <% end %>
 </div>
