@@ -5,9 +5,11 @@ class TemplesController < ApplicationController
   end
 
   def show
+    @temple = Temple.find(params[:id])
   end
 
   def edit
+    @temple = Temple.find(params[:id])
   end
 
 
@@ -21,11 +23,16 @@ class TemplesController < ApplicationController
     end
   end
 
-  private
-
   def update
+    @temple = Temple.find(params[:id])
+    if @temple.save
+      redirect_to temples_path
+    else
+      render edit_temple_path
+    end
   end
 
+ private
   def temples_params
     params.permit(:prefecture, :temple_number, :temple_name, :temple_image)
   end

@@ -1,0 +1,28 @@
+<h2>投稿情報編集</h2>
+<%= form_with model: @temple,url: temple_path, local:true do |f| %>
+<table>
+
+  <tr>
+     <th>県</th>
+     <td><%= f.text_field :prefecture %></td>
+
+  <tr>
+     <th>札所番号</th>
+     <td><%= f.text_field :temple_number %></td>
+  </tr>
+
+  <tr>
+     <th>お寺の名前</th>
+     <td><%= f.text_field :temple_name %></td>
+  </tr>
+
+  <tr>
+     <th>画像</th>
+     <td><%= f.file_field :temple_image %></td>
+  </tr>
+
+</table>
+
+<%= f.submit "編集完了", class: "btn btn-success" %>
+
+<% end %>
