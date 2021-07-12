@@ -1,28 +1,79 @@
 <%= form_with model:@temple, local:true do |f| %>
-<div>
-  <%= f.label :prefecture, "県" %>
-  <%= f.text_field :prefecture, class: 'form-control temple_prefecture' %>
-</div>
-<div>
-  <%= f.label :number, "札所番号" %>
-  <%= f.text_field :temple_number, class: 'form-control temple_number' %>
-</div>
-<div>
-  <%= f.label :name, "お寺の名前" %>
-  <%= f.text_field :temple_name, class: 'form-control temple_name' %>
-</div>
-<div>
-  <%= f.label :image, "画像" %>
-  <%= f.file_field :temple_image %>
-</div>
+<table>
+<tr>
+  <th><%= f.label :prefecture, "県名" %></th>
+  <td>
+  <%= f.radio_button(:prefecture, "徳島県") %> 徳島県
+  <%= f.radio_button(:prefecture, "高知県") %> 高知県
+  <%= f.radio_button(:prefecture, "愛媛県") %> 愛媛県
+  <%= f.radio_button(:prefecture, "香川県") %> 香川県
+  </td>
+</tr>
+<tr>
+<th><%= f.label :temple_name, "お寺の名前" %></th>
+<td><%= f.collection_select(:temple_name, @temples, :id, :temple_name) %></td>
+</tr>
+<tr>
+<th><%= f.label :image, "画像" %></th>
+<td><%= f.file_field :temple_image %></td>
+</tr>
+</table>
 <%= f.submit %>
 <% end %>
 
+
+<table>
 <div>
   <% @temples.each do |temple| %>
-  <%= temple.prefecture %>
-  <%= temple.temple_number %>
-  <%= link_to temple.temple_name, temple_path(temple) %>
-  <%= temple.temple_image %>
+  <tr>
+  <th>県</th>
+  <td><%= temple.prefecture %></td>
+  </tr>
+  <tr>
+    <th>札所番号</th>
+  <td><%= temple.temple_number %></td>
+  </tr>
+  <tr>
+    <th>お寺の名前</th>
+    <td><%= link_to temple.temple_name, temple_path(temple) %></td>
+  </tr>
+  <tr>
+    <th>画像</th>
+    <td><%= temple.temple_image %></td>
+
+  </tr>
   <% end %>
 </div>
+</table>
+
+<script>
+ $('#temple_name > option').hide();
+     $('#prefecture_徳島県').change(function() {
+         $('#temple_name > option').hide();
+        console.log( $(this).val() );
+        <% @temples.ids[0..22].each do |temple_id| %>
+        $('#temple_name > option[value=<%= temple_id %>]').show();
+        <% end %>
+    });
+         $('#prefecture_高知県').change(function() {
+           $('#temple_name > option').hide();
+          console.log( $(this).val() );
+        <% @temples.ids[23..38].each do |temple_id| %>
+        $('#temple_name > option[value=<%= temple_id %>]').show();
+        <% end %>
+    });
+     $('#prefecture_愛媛県').change(function() {
+           $('#temple_name > option').hide();
+          console.log( $(this).val() );
+        <% @temples.ids[39..64].each do |temple_id| %>
+        $('#temple_name > option[value=<%= temple_id %>]').show();
+        <% end %>
+    });
+     $('#prefecture_香川県').change(function() {
+           $('#temple_name > option').hide();
+          console.log( $(this).val() );
+        <% @temples.ids[65..88].each do |temple_id| %>
+        $('#temple_name > option[value=<%= temple_id %>]').show();
+        <% end %>
+    });
+</script>

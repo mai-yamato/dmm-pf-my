@@ -25,7 +25,7 @@ class TemplesController < ApplicationController
 
   def update
     @temple = Temple.find(params[:id])
-    if @temple.save
+    if @temple.update(temples_params)
       redirect_to temples_path
     else
       render edit_temple_path
@@ -34,6 +34,6 @@ class TemplesController < ApplicationController
 
  private
   def temples_params
-    params.permit(:prefecture, :temple_number, :temple_name, :temple_image)
+    params.require(:temple).permit(:prefecture, :temple_number, :temple_name, :temple_image)
   end
 end
