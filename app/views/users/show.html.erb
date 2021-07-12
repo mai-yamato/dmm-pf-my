@@ -1,2 +1,32 @@
 <h2>user show</h2>
 
+<table>
+
+  <tr>
+    <th>プロフィール画像</th>
+    <td><%= @user.profile_image %></td>
+  </tr>
+
+  <tr>
+    <th>名前</th>
+    <td><%= @user.name %></td>
+  </tr>
+
+  <tr>
+    <th>メールアドレス</th>
+    <td><%= @user.email %></td>
+  </tr>
+
+  <tr>
+    <th>一言</th>
+    <td><%= @user.introduction %></td>
+  </tr>
+
+  <tr>
+    <th>ステータス</th>
+    <td><%= @user.user_status %></td>
+  </tr>
+
+</table>
+
+<%= link_to "編集する", edit_user_path(@user) %>

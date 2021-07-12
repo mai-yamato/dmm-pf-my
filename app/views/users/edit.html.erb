@@ -1,0 +1,26 @@
+<h2>マイページ編集</h2>
+
+<%= form_with model:@user, local:true do |f| %>
+<div>
+  <%= f.label :profile_image, "プロフィール画像" %>
+  <%= f.file_field :profile_image, class: 'form-control profile_image' %>
+</div>
+<div>
+  <%= f.label :name, "名前" %>
+  <%= f.text_field :name, class: 'form-control user_name' %>
+</div>
+<div>
+  <%= f.label :email, "メールアドレス" %>
+  <%= f.text_field :email, class: 'form-control email' %>
+</div>
+<div>
+  <%= f.label :introduction, "一言" %>
+  <%= f.text_field :introduction %>
+</div>
+<div>
+  <%= f.label :user_status, "ステータス" %>
+  <%= f.radio_button :user_status, :true %> 巡礼中<%= f.radio_button :user_status, :false %> 興味あり
+</div>
+
+<%= f.submit %>
+<% end %>
