@@ -24,7 +24,13 @@
 
   <tr>
     <th>ステータス</th>
-    <td><%= @user.user_status %></td>
+    <td>
+       <% if @user.user_status == false %>
+  　     <div>興味あり</div>
+  　     <% else %>
+  　     <div>巡礼中</div>
+  　   <% end %>
+    </td>
   </tr>
 
 </table>

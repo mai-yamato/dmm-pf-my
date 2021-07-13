@@ -1,7 +1,9 @@
 class TemplesController < ApplicationController
 
   def index
-    @temples = Temple.all
+    @temples = Temple.where(is_seed: true)
+    @temples2 = Temple.new
+    @temple_view = Temple.where(is_seed: false)
   end
 
   def show
@@ -9,6 +11,7 @@ class TemplesController < ApplicationController
   end
 
   def edit
+    @temples = Temple.where(is_seed: true)
     @temple = Temple.find(params[:id])
   end
 
@@ -16,6 +19,8 @@ class TemplesController < ApplicationController
 
   def create
     @temple = Temple.new(temples_params)
+    @temple.is_seed = false
+
     if @temple.save
       redirect_to temples_path, notice: 'セーブ'
     else
@@ -34,6 +39,6 @@ class TemplesController < ApplicationController
 
  private
   def temples_params
-    params.require(:temple).permit(:prefecture, :temple_number, :temple_name, :temple_image)
+    params.require(:temple).permit(:prefecture, :temple_name, :opinion, :temple_image)
   end
 end

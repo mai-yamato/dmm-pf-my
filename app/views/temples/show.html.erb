@@ -1,8 +1,15 @@
 <h2>投稿詳細</h2>
 
-<div>県</div>
-<div>札所番号</div>
+<table>
+
+<div>県名</div>
+<%= @temple.prefecture %>
 <div>お寺の名前</div>
+<%= @temple.temple_name %>
+<div>内容</div>
+<%= @temple.opinion %>
 <div>画像</div>
+<%= attachment_image_tag @temple, :temple_image, :fill, 100, 100 %>
+</table>
 
 <%= link_to '編集する', edit_temple_path(@temple) %>

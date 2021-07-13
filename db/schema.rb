@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_12_065433) do
+ActiveRecord::Schema.define(version: 2021_07_13_123025) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -24,9 +24,11 @@ ActiveRecord::Schema.define(version: 2021_07_12_065433) do
     t.datetime "updated_at", null: false
     t.integer "temple_id"
     t.string "temple_name"
-    t.string "temple_image"
+    t.string "temple_image_id"
     t.integer "temple_number"
     t.string "prefecture"
+    t.text "opinion"
+    t.boolean "is_seed"
   end
 
   create_table "users", force: :cascade do |t|
