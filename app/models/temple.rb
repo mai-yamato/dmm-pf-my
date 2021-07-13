@@ -1,5 +1,7 @@
 class Temple < ApplicationRecord
 
+   attachment :temple_image
+
    has_many :favorites, dependent: :destroy
 
 

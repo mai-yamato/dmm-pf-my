@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
 
-  enum user_status: {"興味あり" => false, "巡礼中" => true}
+  enum user_status: {"興味あり" => "false", "巡礼中" => "true"}
 
 end

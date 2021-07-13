@@ -3,22 +3,26 @@
 <table>
 
   <tr>
-     <th>県</th>
-     <td><%= f.text_field :prefecture %></td>
-
+     <th><%= f.label :prefecture, "県名" %></th>
+     <td>
+       <%= f.radio_button(:prefecture, "徳島県") %> 徳島県
+       <%= f.radio_button(:prefecture, "高知県") %> 高知県
+       <%= f.radio_button(:prefecture, "愛媛県") %> 愛媛県
+       <%= f.radio_button(:prefecture, "香川県") %> 香川県
+     </td>
   <tr>
-     <th>札所番号</th>
-     <td><%= f.text_field :temple_number %></td>
+     <th><%= f.label :temple_name, "お寺の名前" %></th>
+     <td><%= f.collection_select(:temple_name, @temples, :temple_name, :temple_name) %></td>
   </tr>
 
   <tr>
-     <th>お寺の名前</th>
-     <td><%= f.text_field :temple_name %></td>
+    <th><%= f.label :opinion, "内容" %></th>
+    <td><%= f.text_field :opinion %></td>
   </tr>
 
   <tr>
      <th>画像</th>
-     <td><%= f.file_field :temple_image %></td>
+     <td><%= f.attachment_field :temple_image %></td>
   </tr>
 
 </table>
@@ -26,3 +30,35 @@
 <%= f.submit "編集完了", class: "btn btn-success" %>
 
 <% end %>
+
+<script>
+ $('#temple_name > option').hide();
+     $('#temple_prefecture_徳島県').change(function() {
+         $('#temple_temple_name > option').hide();
+        console.log( $(this).val() );
+        <% @temples[0..22].each do |temple_id| %>
+        $('#temple_temple_name > option[value="<%= temple_id.temple_name %>"]').show();
+        <% end %>
+    });
+         $('#temple_prefecture_高知県').change(function() {
+           $('#temple_temple_name > option').hide();
+          console.log( $(this).val() );
+        <% @temples[23..38].each do |temple_id| %>
+        $('#temple_temple_name > option[value="<%= temple_id.temple_name %>"]').show();
+        <% end %>
+    });
+     $('#temple_prefecture_愛媛県').change(function() {
+           $('#temple_temple_name > option').hide();
+          console.log( $(this).val() );
+        <% @temples[39..64].each do |temple_id| %>
+        $('#temple_temple_name > option[value="<%= temple_id.temple_name %>"]').show();
+        <% end %>
+    });
+     $('#temple_prefecture_香川県').change(function() {
+           $('#temple_temple_name > option').hide();
+          console.log( $(this).val() );
+        <% @temples[65..88].each do |temple_id| %>
+        $('#temple_temple_name > option[value="<%= temple_id.temple_name %>"]').show();
+        <% end %>
+    });
+</script>
