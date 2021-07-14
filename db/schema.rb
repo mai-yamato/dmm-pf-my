@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_13_123025) do
+ActiveRecord::Schema.define(version: 2021_07_14_115132) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2021_07_13_123025) do
     t.string "prefecture"
     t.text "opinion"
     t.boolean "is_seed"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -4,8 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :favorites, dependent: :destroy
+has_many :favorites, dependent: :destroy
+has_many :temples, dependent: :destroy
 
-  enum user_status: {"興味あり" => "false", "巡礼中" => "true"}
+  def already_favorited?(post)
+    self.favorites.exists?(temple_id: temple.id)
+  end
+
+
+  # enum user_status: {"興味あり" => "false", "巡礼中" => "true"}
 
 end

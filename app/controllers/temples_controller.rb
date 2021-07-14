@@ -8,6 +8,7 @@ class TemplesController < ApplicationController
 
   def show
     @temple = Temple.find(params[:id])
+
   end
 
   def edit
@@ -18,23 +19,30 @@ class TemplesController < ApplicationController
 
 
   def create
+    @temples = Temple.where(is_seed: true)
     @temple = Temple.new(temples_params)
     @temple.is_seed = false
-
+    @temple.user_id = current_user.id
     if @temple.save
       redirect_to temples_path, notice: 'セーブ'
     else
-      render temples_path
+      render template: "temples/index"
     end
   end
 
   def update
     @temple = Temple.find(params[:id])
-    if @temple.update(temples_params)
+    if @temple.update!(temples_params)
       redirect_to temples_path
     else
-      render edit_temple_path
+      render template: "temples/show"
     end
+  end
+
+  def destroy
+    @temple = Temple.find(params[:id])
+    @temple.destroy
+    redirect_to temples_path
   end
 
  private

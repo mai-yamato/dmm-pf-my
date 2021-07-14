@@ -18,7 +18,7 @@
     <td><%= f.text_field :opinion %></td>
   </tr>
   <tr>
-    <th><%= f.label :image, "画像" %></th>
+    <th><%= f.label :temple_image, "画像" %></th>
     <td><%= f.attachment_field :temple_image %></td>
   </tr>
 </table>
@@ -44,7 +44,19 @@
   <tr>
     <th>画像</th>
     <td><%= attachment_image_tag temple, :temple_image, :fill, 100, 100 %></td>
-
+  </tr>
+  <tr>
+    <td>
+      <% if temple.favorited_by?(current_user) %>
+        <%= link_to temple_favorites_path(temple), method: :delete, remote: true do %>
+        ♥<%= temple.favorites.count %>
+        <% end %>
+        <% else %>
+        <%= link_to temple_favorites_path(temple), method: :post, remote: true do %>
+        ♡<%= temple.favorites.count %>
+        <% end %>
+      <% end %>
+</td>
   </tr>
   <% end %>
 </div>

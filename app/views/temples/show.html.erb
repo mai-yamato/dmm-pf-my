@@ -10,6 +10,21 @@
 <%= @temple.opinion %>
 <div>画像</div>
 <%= attachment_image_tag @temple, :temple_image, :fill, 100, 100 %>
+<div>
+  <% if @temple.favorited_by?(current_user) %>
+  <%= link_to temple_favorites_path(@temple), method: :delete, remote: true do %>
+  ♥<%= @temple.favorites.count %>
+  <% end %>
+  <% else %>
+  <%= link_to temple_favorites_path(@temple), method: :post, remote: true do %>
+  ♡<%= @temple.favorites.count %>
+  <% end %>
+<% end %>
+</div>
 </table>
 
 <%= link_to '編集する', edit_temple_path(@temple) %>
+
+<%= link_to '削除', temple_path(@temple.id), method: :delete %>
+
+<%= link_to '戻る', temples_path %>
