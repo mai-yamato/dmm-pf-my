@@ -1,22 +1,52 @@
 <header>
-　<div class="logo">
-    <%#= image_tag "logo1.jpg" %>
-    <%# end %>
-　</div>
-
-  <div>
-    <ul>
-    　<% if user_signed_in? %>
+　<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!--<a class="navbar-brand" href="#!">Navbar</a>-->
+      <div>
+      <% if user_signed_in? %>
       <%= "ようこそ、" %><%= link_to current_user.name, user_path(current_user) %><%= "さん！！" %>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <% link_to "ログアウト", destroy_user_session_path, method: :delete, data:{class:"nav-link"} %>
+            <a class="nav-link" href="/users/sign_out" data-method="delete">ログアウト</a>
+          </li>
 
-      　<li><%= link_to 'Home',root_path(current_user) %></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-      <% else %>
-　      <li><%= link_to 'Hone', root_path %></li>
-        <li><%= link_to 'About', home_about_path %></li>
-        <li><%= link_to '新規登録', new_user_registration_path %></li>
-        <li><%= link_to 'ログイン', new_user_session_path %></li>
+          <% else %>
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/home/about">About</a>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/sign_up">新規登録</a>
+            <li class="nav-item">
+            <a class="nav-link" href="users/sign_in">ログイン</a>
+          </li>
+
+        </ul>
+      </div>
       <% end %>
-    </ul>
-　</div>
+</nav>
+
+ <!-- <div>-->
+ <!--   <ul>-->
+
+
+ <!--     　<li><%#= link_to 'Home',root_path %></li>-->
+ <!--       <li><%#= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>-->
+
+　<!--      <li><%#= link_to 'Hone', %></li>-->
+ <!--       <li><%#= link_to 'About',  %></li>-->
+ <!--       <li><%#= link_to '新規登録',  %></li>-->
+ <!--       <li><%#= link_to 'ログイン',  %></li>-->
+
+ <!--   </ul>-->
+　<!--</div>-->
 </header>

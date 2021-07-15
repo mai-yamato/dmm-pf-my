@@ -1,30 +1,31 @@
 <h2>投稿詳細</h2>
 
-<table>
+<table class="table">
 
-<div>県名</div>
-<%= @temple.prefecture %>
-<div>お寺の名前</div>
-<%= @temple.temple_name %>
-<div>内容</div>
-<%= @temple.opinion %>
-<div>画像</div>
-<%= attachment_image_tag @temple, :temple_image, :fill, 100, 100 %>
-<div>
-  <% if @temple.favorited_by?(current_user) %>
-  <%= link_to temple_favorites_path(@temple), method: :delete, remote: true do %>
-  ♥<%= @temple.favorites.count %>
-  <% end %>
-  <% else %>
-  <%= link_to temple_favorites_path(@temple), method: :post, remote: true do %>
-  ♡<%= @temple.favorites.count %>
-  <% end %>
-<% end %>
-</div>
+<tr>
+  <th>県名</th>
+  <td><%= @temple.prefecture %></td>
+</tr>
+<tr>
+  <th>お寺の名前</th>
+  <td><%= @temple.temple_name %></td>
+</tr>
+<tr><th>内容</th>
+<td><%= @temple.opinion %></td>
+</tr>
+<tr>
+  <th>画像</th>
+  <td><%= attachment_image_tag @temple, :temple_image, :fill, 200, 200, fallback: "no_image.png" %></td>
+</tr>
+<tr>
+  <div id="fav_btn">
+  <%= render('favorites/favorite') %>
+  </div>
+</tr>
 </table>
 
-<%= link_to '編集する', edit_temple_path(@temple) %>
+<%= link_to '編集する', edit_temple_path(@temple), class:"btn btn-success" %>
 
-<%= link_to '削除', temple_path(@temple.id), method: :delete %>
+<%= link_to '削除', temple_path(@temple.id), method: :delete, class:"btn btn-danger" %>
 
-<%= link_to '戻る', temples_path %>
+<%= link_to '戻る', temples_path, class:"btn btn-primary" %>
