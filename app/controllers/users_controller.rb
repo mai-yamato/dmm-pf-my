@@ -4,18 +4,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
 
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
 
   end
 
   def update
-    @user = current_user
-    if @user.update(user_params)
+     @user = current_user
+    if @user.update!(user_params)
       redirect_to user_path(@user.id)
     else
       render :edit
@@ -24,7 +24,13 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:profile_image, :name, :email, :introduction, :user_status)
+    params.require(:user).permit(:profile_picture, :name, :email, :introduction, :user_status)
   end
 
+  # def current_user
+  #   @user = User.find(params[:id])
+  #   unless @user.id == current_user.id
+  #     redirect_to user_path(current_user)
+  #   end
+  # end
 end
