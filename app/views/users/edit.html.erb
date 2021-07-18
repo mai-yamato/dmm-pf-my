@@ -2,8 +2,9 @@
 
 <%= form_with model:@user, local:true do |f| %>
 <div>
-  <%= f.label :profile_picture, "プロフィール画像" %>
-  <%= f.file_field :profile_picture, class: 'form-control profile_picture' %>
+  <%= f.label :profile_picture_id, "プロフィール画像" %>
+  <%#= f.file_field :profile_picture_id, class: 'form-control profile_picture' %>
+  <%= f.attachment_field :profile_picture, class: 'form-control profile_picture' %>
 </div>
 <div>
   <%= f.label :name, "名前" %>
