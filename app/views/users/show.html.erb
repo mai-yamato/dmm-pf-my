@@ -9,7 +9,7 @@
     <%#= attachment_field @user.profile_picture_id %>
     <%#= image_tag attachment_url(@user, :profile_picture_id, :fill, 300, 300, format: "jpg", fallback: "no_image.png") %>
 
-    <td><%= attachment_image_tag @user, :profile_picture, fallback: "no_image.jpg" , format:'jpeg', size:"150x150"%>
+    <td><%= attachment_image_tag @user, :profile_picture, fallback: "no_image.png", size:"150x150"%>
     <%#= f.attachment_field :profile_picture, placeholder: "プロフィール画像" %>
     </td>
   </tr>
@@ -41,6 +41,15 @@
   </tr>
 
 </table>
+
+<% if current_user.following?(@user) %>
+  <%= link_to "Unfollow", user_relationships_path(@user.id), method: :delete %>
+<% else %>
+  <%= link_to "Follow", user_relationships_path(@user.id), method: :post %>
+<% end %>
+
+<div>フォロー数: <%= @user.followings.count %></div>
+<div>フォロワー数: <%= @user.followers.count %></div>
 
 <%= link_to "編集する", edit_user_path(@user), class:"btn btn-success" %>
 

@@ -1,5 +1,8 @@
 <div class="container">
   <div class="row">
+     <%= render('searches/search') %>
+  </div>
+<div class="row">
     <div class="col-5">
       <%= form_with model:@temples2,url: temples_path, local:true do |f| %>
       <table>
@@ -50,15 +53,9 @@
         </tr>
         <tr>
           <td>
-            <% if temple.favorited_by?(current_user) %>
-              <%= link_to temple_favorites_path(temple), method: :delete, remote: true do %>
-              ♥<%= temple.favorites.count %>
-              <% end %>
-              <% else %>
-              <%= link_to temple_favorites_path(temple), method: :post, remote: true do %>
-              ♡<%= temple.favorites.count %>
-              <% end %>
-            <% end %>
+          <div id="fav_btn">
+           <%= render('favorites/favorite') %>
+          </div>
           </td>
         </tr>
         <% end %>
