@@ -4,6 +4,8 @@ class TemplesController < ApplicationController
     @temples = Temple.where(is_seed: true)
     @temples2 = Temple.new
     @temple_view = Temple.where(is_seed: false)
+    @temple = Temple.find(current_user.id)
+
   end
 
   def show
@@ -45,8 +47,16 @@ class TemplesController < ApplicationController
     redirect_to temples_path
   end
 
+#   def search
+#   #   @search = Temple.search(params[:search])
+#   # render "index"
+# 　end
+
+
  private
   def temples_params
     params.require(:temple).permit(:prefecture, :temple_name, :opinion, :temple_image)
   end
+
+
 end

@@ -6,7 +6,14 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get '/home/about' => 'homes#about'
 
-  resources :users, :only => [:index, :show, :create, :edit, :update]
+
+  get 'search' => 'searchs#search'
+
+  resources :users, :only => [:index, :show, :create, :edit, :update] do
+    resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+    end
   resources :temples, :only => [:index, :show, :create, :edit, :update, :destroy] do
     resources :favorites, only: [:create, :destroy]
   end

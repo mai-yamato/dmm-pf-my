@@ -5,6 +5,15 @@ class Temple < ApplicationRecord
    has_many :favorites, dependent: :destroy
    belongs_to :user
 
+def self.looks(search, word)
+    if search == "perfect_match"
+      @temple = Temple.where("temple_name LIKE?","#{word}")
+    elsif search == "partial_match"
+      @temple = Temple.where("temple_name LIKE?","%#{word}%")
+    else
+      @temple = Temple.all
+    end
+end
 
 
 
