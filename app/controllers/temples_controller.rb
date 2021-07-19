@@ -1,21 +1,23 @@
 class TemplesController < ApplicationController
+  
+  before_action :get_default_data, only: [:show, :edit, :update]
 
   def index
     @temples = Temple.where(is_seed: true)
     @temples2 = Temple.new
-    @temple_view = Temple.where(is_seed: false)
+    @temples_view = Temple.where(is_seed: false)
     @temple = Temple.find(current_user.id)
-
+    @search_result_temple = []
   end
 
   def show
-    @temple = Temple.find(params[:id])
+    # @temple = Temple.find(params[:id])
 
   end
 
   def edit
     @temples = Temple.where(is_seed: true)
-    @temple = Temple.find(params[:id])
+    # @temple = Temple.find(params[:id])
   end
 
 
@@ -33,7 +35,7 @@ class TemplesController < ApplicationController
   end
 
   def update
-    @temple = Temple.find(params[:id])
+    # @temple = Temple.find(params[:id])
     if @temple.update!(temples_params)
       redirect_to temples_path
     else
@@ -47,15 +49,30 @@ class TemplesController < ApplicationController
     redirect_to temples_path
   end
 
-#   def search
-#   #   @search = Temple.search(params[:search])
-#   # render "index"
-# 　end
+  def search
+    # @temples = Temple.where(is_seed: true)
+    # @temples2 = Temple.new
+    # @range = params[:range]
+    # @temple = Temple.looks(params[:search], params[:word])
+    # @temples_view = Temple.where(is_seed: false)
+    @temples = Temple.where(is_seed: true)
+    @temples2 = Temple.new
+    @temples_view = Temple.where(is_seed: false)
+    @temple = Temple.find(current_user.id)
+
+    @search_result_temple = Temple.looks(params[:search], params[:word])
+
+    render 'index'
+  end
 
 
  private
   def temples_params
     params.require(:temple).permit(:prefecture, :temple_name, :opinion, :temple_image)
+  end
+  
+  def get_default_data
+    @temple = Temple.find(params[:id])
   end
 
 

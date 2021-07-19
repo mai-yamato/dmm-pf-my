@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-     <%= render('searches/search') %>
+     <%= render 'searches/search', search_result_temple: @search_result_temple %>
   </div>
 <div class="row">
     <div class="col-5">
@@ -34,7 +34,7 @@
 
     <div class="col-7">
       <table class="table">
-        <% @temple_view.each do |temple| %>
+        <% @temples_view.each do |temple| %>
         <tr>
           <th>県</th>
           <td><%= temple.prefecture %></td>
@@ -53,8 +53,8 @@
         </tr>
         <tr>
           <td>
-          <div id="fav_btn">
-           <%= render('favorites/favorite') %>
+          <div id="favorites_buttons_<%= temple.id %>">
+           <%= render 'favorites/favorite', temple: temple %>
           </div>
           </td>
         </tr>

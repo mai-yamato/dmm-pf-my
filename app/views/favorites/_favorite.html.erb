@@ -1,9 +1,9 @@
-<% if @temple.favorited_by?(current_user) %>
-  <%= link_to temple_favorite_path(temple_id: @temple, id: 1), method: :delete, remote: true do %>
-  ♥<%= @temple.favorites.count %>
+<% if temple.favorited_by?(current_user) %>
+  <%= link_to temple_favorites_path(temple), method: :delete, remote: true do %>
+  ♥<%= temple.favorites.count %>
   <% end %>
 <% else %>
-  <%= link_to temple_favorites_path(@temple), method: :post, remote: true do %>
-  ♡<%= @temple.favorites.count %>
+  <%= link_to temple_favorites_path(temple), method: :post, remote: true do %>
+  ♡<%= temple.favorites.count %>
   <% end %>
 <% end %>

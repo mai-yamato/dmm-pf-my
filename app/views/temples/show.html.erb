@@ -18,8 +18,8 @@
   <td><%= attachment_image_tag @temple, :temple_image, :fill, 200, 200, fallback: "no_image.png" %></td>
 </tr>
 <tr>
-  <div id="fav_btn">
-  <%= render('favorites/favorite') %>
+  <div id="favorites_buttons_<%= @temple.id %>">
+  <%= render 'favorites/favorite', temple: @temple %>
   </div>
 </tr>
 </table>
