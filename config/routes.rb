@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/home/about' => 'homes#about'
 
 
-  get 'search' => 'searchs#search'
+  get 'search' => 'temples#search'
 
   resources :users, :only => [:index, :show, :create, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
@@ -15,6 +15,6 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followers', as: 'followers'
     end
   resources :temples, :only => [:index, :show, :create, :edit, :update, :destroy] do
-    resources :favorites, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
   end
 end
