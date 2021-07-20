@@ -13,6 +13,7 @@ class TemplesController < ApplicationController
   def show
     # @temple = Temple.find(params[:id])
     @temple_comment = TempleComment.new
+    @user = @temple.user
   end
 
   def edit
