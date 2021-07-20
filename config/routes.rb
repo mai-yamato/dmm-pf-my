@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get 'search' => 'temples#search'
 
+  get 'contact' => 'contacts#show'
+
   resources :users, :only => [:index, :show, :create, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
@@ -18,4 +20,7 @@ Rails.application.routes.draw do
     resources :temple_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
+
+  resources :contacts, :onry => [:show, :create, :new]
+
 end

@@ -3,6 +3,10 @@
 <table class="table">
 
 <tr>
+  <th>投稿者</th>
+  <td><%= link_to @user.name, user_path(@user) %></td>
+</tr>
+<tr>
   <th>県名</th>
   <td><%= @temple.prefecture %></td>
 </tr>
