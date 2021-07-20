@@ -1,5 +1,5 @@
 class TemplesController < ApplicationController
-  
+
   before_action :get_default_data, only: [:show, :edit, :update]
 
   def index
@@ -12,7 +12,7 @@ class TemplesController < ApplicationController
 
   def show
     # @temple = Temple.find(params[:id])
-
+    @temple_comment = TempleComment.new
   end
 
   def edit
@@ -70,7 +70,7 @@ class TemplesController < ApplicationController
   def temples_params
     params.require(:temple).permit(:prefecture, :temple_name, :opinion, :temple_image)
   end
-  
+
   def get_default_data
     @temple = Temple.find(params[:id])
   end
