@@ -2,6 +2,7 @@ class Temple < ApplicationRecord
 
    attachment :temple_image
 
+   has_many :temple_comments, dependent: :destroy
    has_many :favorites, dependent: :destroy
    belongs_to :user
 

@@ -18,10 +18,11 @@
   <td><%= attachment_image_tag @temple, :temple_image, :fill, 200, 200, fallback: "no_image.png" %></td>
 </tr>
 <tr>
-  <div id="favorites_buttons_<%= @temple.id %>">
-  <%= render 'favorites/favorite', temple: @temple %>
+  <td><div id="favorites_buttons_<%= @temple.id %>">
+  <%= render 'favorites/favorite', temple: @temple %></td>
   </div>
 </tr>
+
 </table>
 
 <%= link_to '編集する', edit_temple_path(@temple), class:"btn btn-success" %>
@@ -29,3 +30,23 @@
 <%= link_to '削除', temple_path(@temple.id), method: :delete, class:"btn btn-danger" %>
 
 <%= link_to '戻る', temples_path, class:"btn btn-primary" %>
+
+
+<div class="comments">
+<p>コメント件数：<%= @temple.temple_comments.count %></p>
+<% @temple.temple_comments.each do |temple_comment| %>
+  <%= temple_comment.user.name %>
+  <%= temple_comment.created_at.strftime('%Y/%m/%d') %><%= temple_comment.comment %>
+    <% if temple_comment.user == current_user %>
+      <div class="comment-delete">
+        <%= link_to "削除", temple_temple_comment_path(temple_comment.temple, temple_comment), method: :delete %>
+      </div>
+    <% end %>
+<% end %>
+</div>
+<div class="new-comment">
+<%= form_with(model:[@temple, @temple_comment], local: true) do |f| %>
+  <%= f.text_area :comment, rows:'5',placeholder: "コメントする？" %>
+  <%= f.submit "コメント送信" %>
+<% end %>
+</div>

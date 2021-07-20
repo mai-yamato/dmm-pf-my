@@ -57,6 +57,9 @@
            <%= render 'favorites/favorite', temple: temple %>
           </div>
           </td>
+          <td>
+            <%= link_to "#{temple.temple_comments.count} コメント", temple_path(temple.id) %>
+          </td>
         </tr>
         <% end %>
       </table>

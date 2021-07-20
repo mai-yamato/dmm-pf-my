@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followers', as: 'followers'
     end
   resources :temples, :only => [:index, :show, :create, :edit, :update, :destroy] do
+    resources :temple_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
 end
