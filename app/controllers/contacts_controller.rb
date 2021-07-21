@@ -13,10 +13,14 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     if @contact.save
       ContactMailer.contact_mail(@contact).deliver
-      redirect_to contact_path
+      redirect_to thanks_path
     else
-      redirect_to contact_path
+      redirect_to thanks_path
     end
+  end
+
+
+  def thanks
   end
 
 private

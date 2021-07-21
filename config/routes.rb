@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get 'contact' => 'contacts#show'
 
+  get 'thanks' => 'contacts#thanks'
+
   resources :users, :only => [:index, :show, :create, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
