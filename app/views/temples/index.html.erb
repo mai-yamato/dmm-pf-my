@@ -7,6 +7,9 @@
       <%= form_with model:@temples2,url: temples_path, local:true do |f| %>
       <table>
         <tr>
+          <h3>投稿フォーム</h3>
+        </tr>
+        <tr>
           <th><%= f.label :prefecture, "県名" %></th>
           <td>
           <%= f.radio_button(:prefecture, "徳島県") %> 徳島県
@@ -34,6 +37,9 @@
 
     <div class="col-7">
       <table class="table">
+        <tr>
+          <h3>投稿一覧</h3>
+        </tr>
         <% @temples_view.each do |temple| %>
         <tr>
           <th>県</th>
