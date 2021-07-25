@@ -15,6 +15,11 @@
  */
 @import "bootstrap";
 
+@font-face {
+  font-family: 'ちはや毛筆-free-';
+  src: fot-url('/assets/ちはや毛筆-free-.ttf') format('truetype');
+}
+
 .swiper-container{
   height: 500px;
 }

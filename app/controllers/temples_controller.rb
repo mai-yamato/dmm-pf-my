@@ -2,12 +2,15 @@ class TemplesController < ApplicationController
 
   before_action :get_default_data, only: [:show, :edit, :update]
 
+
+
   def index
     @temples = Temple.where(is_seed: true)
     @temples2 = Temple.new
-    @temples_view = Temple.where(is_seed: false)
+    # @temples_view = Temple.where(is_seed: false)
     @temple = Temple.find(current_user.id)
     @search_result_temple = []
+    @temples_views = Temple.where(is_seed: false).page(params[:page]).per(5)
   end
 
   def show

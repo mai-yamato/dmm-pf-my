@@ -1,11 +1,11 @@
-<h5>お問い合わせフォーム</h5>
+<h3>お問い合わせフォーム</h3>
 
 <%= form_with model: @contact do |f| %>
   <%= f.label :お名前 %><br>
   <%= f.text_field :name %><br>
   <%= f.label :お問い合わせ内容 %><br>
-  <%= f.text_field :message %><br>
+  <%= f.text_area :message, rows:'5' %><br>
 
 <% end %>
 
-<%= link_to '送信', thanks_path %>
+<%= link_to '送信', thanks_path, class:"btn btn-warning" %>
