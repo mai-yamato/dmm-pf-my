@@ -88,3 +88,4 @@ group :production do
   gem 'mysql2'
 end
 
+gem 'bootstrap4-kaminari-views'

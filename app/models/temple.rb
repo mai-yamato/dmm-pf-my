@@ -6,6 +6,8 @@ class Temple < ApplicationRecord
    has_many :favorites, dependent: :destroy
    belongs_to :user
 
+   paginates_per 5
+
 def self.looks(search, word)
     if search == "perfect_match"
       @temple = Temple.where("temple_name LIKE?","#{word}")
