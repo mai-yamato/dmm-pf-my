@@ -19,3 +19,7 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+// $(function(){
+//   $("#test2").addClass("haikei");
+// })

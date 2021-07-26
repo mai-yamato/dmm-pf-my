@@ -1,15 +1,30 @@
-<div class="haikei">
-  <div class="container">
-    <div class="row">
-      <h2>四国八十八か所</h2>
-    </div>
-    <div class"row">
-      <h4>あなたはどんな旅にしたいですか？</h4>
-    </div>
-    <div class="row">
-      <div class="col text-center">
-        <%= link_to image_tag("sikoku.png"), temples_path, :size =>'100x100' %>
+
+  <div class="first-comment">
+    <div class="container">
+      <div class="row test">
+        <h1>四国八十八か所</h1>
+      </div>
+      <div id="test2" class"row">
+        <h2>あなたはどんな旅にしたいですか？</h2>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <%= link_to image_tag("sikoku.png"), temples_path, :size =>'100x100' , class:"hover" %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+  <!--<script>-->
+    <!--//$("body").addClass("haikei");-->
+    <!--// $(".test").addClass("haikei");-->
+    <!--// $("#test2").addClass("haikei");-->
+
+  <!--  $(".hover").mouseover(function(currenttarget){-->
+  <!--    console.log(currenttarget);-->
+      <!--//影をつける処理を書く-->
+      <!--// $(e.target).addClass("haikei");-->
+  <!--    $(currenttarget).("hover");-->
+  <!--  });-->
+
+  <!--</script>-->

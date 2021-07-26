@@ -7,10 +7,10 @@ class TemplesController < ApplicationController
   def index
     @temples = Temple.where(is_seed: true)
     @temples2 = Temple.new
-    # @temples_view = Temple.where(is_seed: false)
+    @temples_view = Temple.where(is_seed: false)
     @temple = Temple.find(current_user.id)
     @search_result_temple = []
-    @temples_views = Temple.where(is_seed: false).page(params[:page]).per(5)
+    @temples_views = @temples_view.page(params[:page]).per(5)
   end
 
   def show
@@ -54,17 +54,13 @@ class TemplesController < ApplicationController
   end
 
   def search
-    # @temples = Temple.where(is_seed: true)
-    # @temples2 = Temple.new
-    # @range = params[:range]
-    # @temple = Temple.looks(params[:search], params[:word])
-    # @temples_view = Temple.where(is_seed: false)
+  
     @temples = Temple.where(is_seed: true)
     @temples2 = Temple.new
     @temples_view = Temple.where(is_seed: false)
     @temple = Temple.find(current_user.id)
-
     @search_result_temple = Temple.looks(params[:search], params[:word])
+    @temples_views = @temples_view.page(params[:page]).per(5)
 
     render 'index'
   end

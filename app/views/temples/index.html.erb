@@ -7,7 +7,7 @@
       <%= form_with model:@temples2,url: temples_path, local:true do |f| %>
       <table>
         <tr>
-          <h3>投稿フォーム</h3>
+          <h3>投稿フォーム⤵</h3>
         </tr>
         <tr>
           <th><%= f.label :prefecture, "県名" %></th>
@@ -38,9 +38,9 @@
     <div class="col-7">
       <table class="table">
         <tr>
-          <h3>投稿一覧</h3>
+          <h3>投稿一覧⤵</h3>
         </tr>
-        <% @temples_views.each do |temple| %>
+      <% @temples_views.each do |temple| %>
         <tr>
           <th>県</th>
           <td><%= temple.prefecture %></td>
@@ -68,6 +68,7 @@
           </td>
         </tr>
         <% end %>
+
       </table>
       <%= paginate @temples_views, theme: 'twitter-bootstrap-4' %>
     </div>
