@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get 'search' => 'temples#search'
 
+
   get 'contact' => 'contacts#show'
 
   get 'thanks' => 'contacts#thanks'
