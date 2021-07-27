@@ -1,56 +1,58 @@
-<h2>投稿詳細</h2>
+<div class="post_show_img">
+  <h2>投稿詳細</h2>
+    <table class="table">
+      <tr>
+        <th>投稿者</th>
+        <td><%= link_to @user.name, user_path(@user) %></td>
+      </tr>
+      <tr>
+        <th>県名</th>
+        <td><%= @temple.prefecture %></td>
+      </tr>
+      <tr>
+        <th>お寺の名前</th>
+        <td><%= @temple.temple_name %></td>
+      </tr>
+      <tr><th>内容</th>
+      <td><%= @temple.opinion %></td>
+      </tr>
+      <tr>
+        <th>画像</th>
+        <td><%= attachment_image_tag @temple, :temple_image, :fill, 200, 200, fallback: "no_image.png" %></td>
+      </tr>
+      <!--いいね機能-->
+      <tr>
+        <td><div id="favorites_buttons_<%= @temple.id %>">
+        <%= render 'favorites/favorite', temple: @temple %></td>
+        </div>
+      </tr>
+    </table>
 
-<table class="table">
+    <%= link_to '編集する', edit_temple_path(@temple), class:"btn btn-success" %>
 
-<tr>
-  <th>投稿者</th>
-  <td><%= link_to @user.name, user_path(@user) %></td>
-</tr>
-<tr>
-  <th>県名</th>
-  <td><%= @temple.prefecture %></td>
-</tr>
-<tr>
-  <th>お寺の名前</th>
-  <td><%= @temple.temple_name %></td>
-</tr>
-<tr><th>内容</th>
-<td><%= @temple.opinion %></td>
-</tr>
-<tr>
-  <th>画像</th>
-  <td><%= attachment_image_tag @temple, :temple_image, :fill, 200, 200, fallback: "no_image.png" %></td>
-</tr>
-<tr>
-  <td><div id="favorites_buttons_<%= @temple.id %>">
-  <%= render 'favorites/favorite', temple: @temple %></td>
-  </div>
-</tr>
+    <%= link_to '削除', temple_path(@temple.id), method: :delete, class:"btn btn-danger" %>
 
-</table>
-
-<%= link_to '編集する', edit_temple_path(@temple), class:"btn btn-success" %>
-
-<%= link_to '削除', temple_path(@temple.id), method: :delete, class:"btn btn-danger" %>
-
-<%= link_to '戻る', temples_path, class:"btn btn-primary" %>
-
-
-<div class="comments mt-5 mb-3">
-<p>コメント件数：<%= @temple.temple_comments.count %></p>
-<% @temple.temple_comments.each do |temple_comment| %>
-  <%= "○" %><%= temple_comment.user.name %><br>
-  <%= temple_comment.created_at.strftime('%Y/%m/%d') %>　　　　　<%= temple_comment.comment %>
-    <% if temple_comment.user == current_user %>
-      <div class="comment-delete">
-        <%= link_to "削除", temple_temple_comment_path(temple_comment.temple, temple_comment), method: :delete %>
-      </div>
-    <% end %>
-<% end %>
+    <%= link_to '戻る', temples_path, class:"btn btn-primary" %>
 </div>
-<div class="new-comment">
-<%= form_with(model:[@temple, @temple_comment], local: true) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントする？" %>
-  <%= f.submit "コメント送信" %>
-<% end %>
+
+<!--コメント機能-->
+<div class="post_show_comment">
+  <div class="comments mt-5 mb-3">
+    <p>コメント件数：<%= @temple.temple_comments.count %></p>
+      <% @temple.temple_comments.each do |temple_comment| %>
+        <%= "○" %><%= temple_comment.user.name %><br>
+        <%= temple_comment.created_at.strftime('%Y/%m/%d') %>　　　　　<%= temple_comment.comment %><br>
+          <% if temple_comment.user == current_user %>
+            <div class="comment-delete">
+              <%= link_to "削除", temple_temple_comment_path(temple_comment.temple, temple_comment), method: :delete %>
+            </div>
+          <% end %>
+      <% end %>
+  </div>
+  <div class="new-comment">
+    <%= form_with(model:[@temple, @temple_comment], local: true) do |f| %>
+      <%= f.text_area :comment, rows:'5', cols:'80', placeholder: "コメントする？" %>
+      <%= f.submit "コメント送信" %>
+    <% end %>
+  </div>
 </div>

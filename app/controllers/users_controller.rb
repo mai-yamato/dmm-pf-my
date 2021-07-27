@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+
+
   def index
   end
 
@@ -9,8 +11,13 @@ class UsersController < ApplicationController
   end
 
   def edit
+    #自分以外のユーザーが編集できないように（直打）
     @user = User.find(params[:id])
-
+    if @user.id == current_user.id
+      render "edit"
+    else
+      redirect_to temples_path
+    end
   end
 
   def update

@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
 
+  validates :name, length: { minimum: 2 }
+
   def already_favorited?(post)
     self.favorites.exists?(temple_id: temple.id)
   end
