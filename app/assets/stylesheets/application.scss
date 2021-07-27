@@ -13,36 +13,48 @@
  *= require_tree .
  *= require_self
  */
+
+//bootstrap
 @import "bootstrap";
 
+
+//フォント
 @font-face {
   font-family: 'しょかきさらり行体';
   src: url(/assets/しょかきさらり行体.ttf);
 }
 
+//フォントオーサム
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
+//ヘッダー
 header{
   font-family: 'しょかきさらり行体';
 }
 
+//フッター
 footer{
   font-family: 'しょかきさらり行体';
 }
 
+//topフォント
 .top-comment{
   font-family: 'しょかきさらり行体';
 }
+
+//indexフォント
 .first-comment{
   font-family: 'しょかきさらり行体';
 }
 
-
+//topのスワイパー用
 .swiper-container{
-  width: 1200px;
+  width: 1100px;
   height: 500px;
 }
 .img1 {
-  background-image: image-url('img1.JPG');
+  background-image: image-url('img1.jpg');
   background-repeat: no-repeat !important;
   max-width: 100%;
   max-height: 100%;
@@ -63,15 +75,14 @@ footer{
 
 }
 .img4 {
-  background-image: image-url('img4.JPG');
+  background-image: image-url('img4.jpg');
   background-repeat: no-repeat !important;
   max-width: 100%;
   max-height: 100%;
-
 }
 
 
-
+//about.html
 .about {
   background-image: image-url('img5.jpg');
   background-position: center;
@@ -82,11 +93,12 @@ footer{
   font-family: 'しょかきさらり行体';
 }
 
+//thanks.html
 .thanks-comment{
   font-family: 'しょかきさらり行体';
 }
 
-//indexのマウスオーバー
+//sikoku.jpgのマウスオーバー
 .hover {
   color: #fff;
   font-size: 16px;
@@ -121,4 +133,43 @@ footer{
 .hover:hover::before {
   transform: scale(1);
   opacity: 1;
+}
+
+//_search.html
+.search_img {
+  background-color: #FFF;
+}
+
+//temple_index
+.post_img {
+  background-color: #FFF;
+}
+
+.index_img {
+  background-color: #FFF;
+}
+
+//temple_show
+.post_show_img {
+  background-color: #FFF;
+  padding: 20px;
+}
+
+.post_show_comment {
+  background-color: #FFF;
+  padding: 20px;
+  margin: 20px;
+}
+
+.new-comment {
+  background-color: #FFF;
+  padding: 20px;
+  margin: 20px;
+}
+
+
+//user_show
+.user_show_img {
+  background-color: #FFF;
+  padding: 20px;
 }

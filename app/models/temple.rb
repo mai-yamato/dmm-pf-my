@@ -8,6 +8,10 @@ class Temple < ApplicationRecord
 
    paginates_per 5
 
+  validates :temple_name, presence: true
+  validates :prefecture, presence: true
+  validates :opinion, length: { in: 1..150 }
+
 def self.looks(search, word)
     if search == "perfect_match"
       @temple = Temple.where("temple_name LIKE?","#{word}")

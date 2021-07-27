@@ -1,76 +1,93 @@
 <div class="container">
+  <!--検索機能-->
   <div class="row">
      <%= render 'searches/search', search_result_temple: @search_result_temple %>
   </div>
-<div class="row">
-    <div class="col-5">
-      <%= form_with model:@temples2,url: temples_path, local:true do |f| %>
-      <table>
-        <tr>
-          <h3>投稿フォーム⤵</h3>
-        </tr>
-        <tr>
-          <th><%= f.label :prefecture, "県名" %></th>
-          <td>
-          <%= f.radio_button(:prefecture, "徳島県") %> 徳島県
-          <%= f.radio_button(:prefecture, "高知県") %> 高知県
-          <%= f.radio_button(:prefecture, "愛媛県") %> 愛媛県
-          <%= f.radio_button(:prefecture, "香川県") %> 香川県
-          </td>
-        </tr>
-        <tr>
-          <th><%= f.label :temple_name, "お寺の名前" %></th>
-          <td><%= f.collection_select(:temple_name, @temples, :temple_name, :temple_name) %></td>
-        </tr>
-        <tr>
-          <th><%= f.label :opinion, "内容" %></th>
-          <td><%= f.text_area :opinion, rows:'5' %></td>
-        </tr>
-        <tr>
-          <th><%= f.label :temple_image, "画像" %></th>
-          <td><%= f.attachment_field :temple_image %></td>
-        </tr>
-      </table>
-      <%= f.submit "投稿", class: 'btn btn-success'%>
-      <% end %>
+  <div class="row">
+    <!--投稿フォーム-->
+    <div class="col-xs-5">
+      <div class="post_img">
+        <%= form_with model:@temples2,url: temples_path, local:true do |f| %>
+        <table>
+          <tr>
+            <h3>投稿フォーム⤵</h3>
+          </tr>
+          <tr>
+            <th><%= f.label :prefecture, "県名" %></th>
+            <td>
+            <%= f.radio_button(:prefecture, "徳島県") %> 徳島県
+            <%= f.radio_button(:prefecture, "高知県") %> 高知県
+            <%= f.radio_button(:prefecture, "愛媛県") %> 愛媛県
+            <%= f.radio_button(:prefecture, "香川県") %> 香川県
+            </td>
+          </tr>
+          <tr>
+            <th><%= f.label :temple_name, "お寺の名前" %></th>
+            <td><%= f.collection_select(:temple_name, @temples, :temple_name, :temple_name) %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :opinion, "内容" %></th>
+            <td><%= f.text_area :opinion, rows:'5' %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :temple_image, "画像" %></th>
+            <td><%= f.attachment_field :temple_image %></td>
+          </tr>
+        </table>
+        <%= f.submit "投稿", class: 'btn btn-success'%>
+        <% end %>
+      </div>
     </div>
 
-    <div class="col-7">
-      <table class="table">
-        <tr>
-          <h3>投稿一覧⤵</h3>
-        </tr>
-      <% @temples_views.each do |temple| %>
-        <tr>
-          <th>県</th>
-          <td><%= temple.prefecture %></td>
-        </tr>
-        <tr>
-          <th>お寺の名前</th>
-          <td><%= link_to temple.temple_name, temple_path(temple) %></td>
-        </tr>
-        <tr>
-          <th>内容</th>
-          <td><%= temple.opinion %></td>
-        </tr>
-        <tr>
-          <th>画像</th>
-          <td><%= attachment_image_tag temple, :temple_image, :fill, 100, 100, fallback: "no_image.png", size:'100x100' %></td>
-        </tr>
-        <tr>
-          <td>
-          <div id="favorites_buttons_<%= temple.id %>">
-           <%= render 'favorites/favorite', temple: temple %>
-          </div>
-          </td>
-          <td>
-            <%= link_to "#{temple.temple_comments.count} コメント", temple_path(temple.id) %>
-          </td>
-        </tr>
-        <% end %>
+　　<!--投稿一覧-->
 
-      </table>
-      <%= paginate @temples_views, theme: 'twitter-bootstrap-4' %>
+    <div class="col-sm-7">
+      <div class="index_img">
+        <table class="table">
+          <tr>
+            <h3>投稿一覧⤵</h3>
+          </tr>
+            <% @temples_views.each do |temple| %>
+        　<tr>
+        　  <th>
+        　 <i class="far fa-compass fa-2x"></i>
+        　  </th>
+          </tr>
+          <tr>
+            <th>県</th>
+            <td><%= temple.prefecture %></td>
+          </tr>
+          <tr>
+            <th>お寺の名前</th>
+            <td><%= link_to temple.temple_name, temple_path(temple) %></td>
+          </tr>
+          <tr>
+            <th>内容</th>
+            <td><%= temple.opinion %></td>
+          </tr>
+          <tr>
+            <th>画像</th>
+            <td><%= attachment_image_tag temple, :temple_image, :fill, 100, 100, fallback: "no_image.png", size:'100x100' %></td>
+          </tr>
+          <!--いいね機能-->
+          <tr>
+            <td>
+            <div id="favorites_buttons_<%= temple.id %>">
+             <%= render 'favorites/favorite', temple: temple %>
+            </div>
+            </td>
+            <td>
+              <%= link_to "#{temple.temple_comments.count} コメント", temple_path(temple.id) %>
+            </td>
+          </tr>
+          <% end %>
+        </table>
+
+        <!--ページネーション-->
+        <div class="pagination justify-content-center">
+          <%= paginate @temples_views, theme: 'twitter-bootstrap-4' %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
