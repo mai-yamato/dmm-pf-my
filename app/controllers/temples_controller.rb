@@ -33,9 +33,10 @@ class TemplesController < ApplicationController
     @temple = Temple.new(temples_params)
     @temple.is_seed = false
     @temple.user_id = current_user.id
-    if @temple.save
+    if @temple.save!
       redirect_to temples_path, notice: 'セーブ'
     else
+      @search_result_temple = []
       render template: "temples/index"
     end
   end
