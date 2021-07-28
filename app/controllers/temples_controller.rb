@@ -10,7 +10,7 @@ class TemplesController < ApplicationController
     @temples2 = Temple.new
     #投稿データを新しい順に並べる
     @temples_view = Temple.where(is_seed: false).order("id desc")
-    @temple = Temple.find(current_user.id)
+
     @search_result_temple = []
     @temples_views = @temples_view.page(params[:page]).per(5)
   end
