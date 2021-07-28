@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/home/about' => 'homes#about'
 
 
-  get 'search' => 'temples#search'
+  get '/search' => 'searchs#search'
 
 
   get 'contact' => 'contacts#show'
