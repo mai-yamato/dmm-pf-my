@@ -154,6 +154,13 @@ footer{
   background-color: #FFF;
 }
 
+//ここでフォームのみ高さ控える
+.post_form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
 .index_img {
   background-color: #FFF;
 }
