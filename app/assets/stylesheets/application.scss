@@ -36,6 +36,8 @@ header{
 //フッター
 footer{
   font-family: 'しょかきさらり行体';
+  background-color: #F5F5F5;
+  height: 200px;
 }
 
 //topフォント
@@ -46,6 +48,13 @@ footer{
 //indexフォント
 .first-comment{
   font-family: 'しょかきさらり行体';
+}
+
+//indexテキスト
+.index_text {
+  background-color: #F5F5F5;
+  padding: 30px;
+  margin-bottom: 20px;
 }
 
 //topのスワイパー用
