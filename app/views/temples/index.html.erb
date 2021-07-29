@@ -5,37 +5,39 @@
   </div>
   <div class="row">
     <!--投稿フォーム-->
-    <div class="shadow p-3 mt-4 col-xs-5 bg-white rounded">
-      <div class="post_img">
-        <%= form_with model:@temples2,url: temples_path, local:true do |f| %>
-        <table>
-          <tr>
-            <h3>投稿フォーム⤵</h3>
-          </tr>
-          <tr>
-            <th><%= f.label :prefecture, "県名" %></th>
-            <td>
-            <%= f.radio_button(:prefecture, "徳島県") %> 徳島県
-            <%= f.radio_button(:prefecture, "高知県") %> 高知県
-            <%= f.radio_button(:prefecture, "愛媛県") %> 愛媛県
-            <%= f.radio_button(:prefecture, "香川県") %> 香川県
-            </td>
-          </tr>
-          <tr>
-            <th><%= f.label :temple_name, "お寺の名前" %></th>
-            <td><%= f.collection_select(:temple_name, @temples, :temple_name, :temple_name) %></td>
-          </tr>
-          <tr>
-            <th><%= f.label :opinion, "内容" %></th>
-            <td><%= f.text_area :opinion, rows:'5' %></td>
-          </tr>
-          <tr>
-            <th><%= f.label :temple_image, "画像" %></th>
-            <td><%= f.attachment_field :temple_image %></td>
-          </tr>
-        </table>
-        <%= f.submit "投稿", class: 'btn btn-success'%>
-        <% end %>
+    <div class="post_form">
+      <div class="shadow p-3 mt-4 col-xs-5 bg-white rounded">
+        <div class="post_img">
+          <%= form_with model:@temples2,url: temples_path, local:true do |f| %>
+          <table>
+            <tr>
+              <h3>投稿フォーム⤵</h3>
+            </tr>
+            <tr>
+              <th><%= f.label :prefecture, "県名" %></th>
+              <td>
+              <%= f.radio_button(:prefecture, "徳島県") %> 徳島県
+              <%= f.radio_button(:prefecture, "高知県") %> 高知県
+              <%= f.radio_button(:prefecture, "愛媛県") %> 愛媛県
+              <%= f.radio_button(:prefecture, "香川県") %> 香川県
+              </td>
+            </tr>
+            <tr>
+              <th><%= f.label :temple_name, "お寺の名前" %></th>
+              <td><%= f.collection_select(:temple_name, @temples, :temple_name, :temple_name) %></td>
+            </tr>
+            <tr>
+              <th><%= f.label :opinion, "内容" %></th>
+              <td><%= f.text_area :opinion, rows:'5' %></td>
+            </tr>
+            <tr>
+              <th><%= f.label :temple_image, "画像" %></th>
+              <td><%= f.attachment_field :temple_image %></td>
+            </tr>
+          </table>
+          <%= f.submit "投稿", class: 'btn btn-success'%>
+          <% end %>
+        </div>
       </div>
     </div>
 
