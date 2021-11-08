@@ -1,21 +1,21 @@
 <!--スワイパー-->
-<div class="swiper-container">
+<div class="swiper">
   <div class="swiper-wrapper">
     <div class="swiper-slide img1"></div>
     <div class="swiper-slide img2"></div>
     <div class="swiper-slide img3"></div>
     <div class="swiper-slide img4"></div>
-
   </div>
   <div class="swiper-pagination"></div>
 </div>
 <script>
 $(document).ready(function() {
 
-var b = new Swiper('.swiper-container', {
+var b = new Swiper('.swiper', {
   loop: true,
   autoPlay: 1000,
 
+  //スワイパーの下にページネーション
   pagination: {
 		el: '.swiper-pagination',
 		type: 'bullets',
@@ -52,7 +52,7 @@ $("#images").skippr({
 </script>
 
 <div class="top-comment">
-  <div class="container">
+  <div class="top-container">
     <div class="row">
       <h2>　　ようこそ<br>　　　　　あなただけの四国八十八か所巡りへ</h3>
     </div>
