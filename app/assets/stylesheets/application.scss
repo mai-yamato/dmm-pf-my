@@ -95,12 +95,33 @@ footer{
 //about.html
 .about {
   background-image: image-url('img5.jpg');
-  background-position: center;
+  background-size: cover;
   width: 1000px;
   height: 700px;
-  color: #FFFF00;
-  text-align : center;
+  position: relative;
+
+}
+.about::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.about-p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-family: 'しょかきさらり行体';
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  color: #fff;
+  z-index: 1;
 }
 
 //thanks.html
