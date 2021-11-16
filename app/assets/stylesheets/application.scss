@@ -170,6 +170,7 @@ footer{
   opacity: 1;
 }
 
+//ballonが消えると「クリックして旅へ」の文字が出てくる
 .balloon {
   position: absolute;                // 親要素を基準
   display: none;                        // 要素を非表示
