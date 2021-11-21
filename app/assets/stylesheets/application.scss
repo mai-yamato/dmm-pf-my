@@ -146,7 +146,8 @@ footer{
   height: 100%;
   max-height: 100%;
 }
-.hover::before {
+
+.hover:before {
   content: "";
   position: absolute;
   width: 100%;
@@ -161,11 +162,12 @@ footer{
   opacity: 0;
   transition: transform ease .3s, opacity .3s;
 }
+
 .hover:hover {
   color: #333;
   background: transparent;
 }
-.hover:hover::before {
+.hover:hover:before {
   transform: scale(1);
   opacity: 1;
 }
@@ -182,7 +184,7 @@ footer{
   margin-top: 12px;                    // 表示位置
   font-size: 80%;                       // 文字サイズ
 }
-.balloon:after{
+.balloon:after {
   border-bottom: 12px solid rgba(153, 153, 153, 0.50); // 吹き出し口の高さ・色
   border-left: 10px solid transparent;    // 吹き出し口の幅１／２
   border-right: 10px solid transparent;   // 吹き出し口の幅１／２
