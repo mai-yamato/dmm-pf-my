@@ -173,17 +173,17 @@ footer{
 }
 
 //ballonが消えると「クリックして旅へ」の文字が出てくる
-.balloon {
-  position: absolute;                // 親要素を基準
-  display: none;                        // 要素を非表示
-  padding: 2px;                         // テキストの前後の余白
-  background-color: rgba(153, 153, 153, 0.50);       // 背景色（透明度）
-  width:180px;                          // 吹き出し全体の幅
-  left: 30%;                           // 表示位置
-  top: 100%;                           // 表示位置
-  margin-top: 12px;                    // 表示位置
-  font-size: 80%;                       // 文字サイズ
-}
+//.balloon {
+  //position: absolute;                // 親要素を基準
+  //display: none;                        // 要素を非表示
+  //padding: 2px;                         // テキストの前後の余白
+  //background-color: rgba(153, 153, 153, 0.50);       // 背景色（透明度）
+  //width:180px;                          // 吹き出し全体の幅
+  //left: 30%;                           // 表示位置
+  //top: 100%;                           // 表示位置
+  //margin-top: 12px;                    // 表示位置
+  //font-size: 80%;                       // 文字サイズ
+//}
 .balloon:after {
   border-bottom: 12px solid rgba(153, 153, 153, 0.50); // 吹き出し口の高さ・色
   border-left: 10px solid transparent;    // 吹き出し口の幅１／２
