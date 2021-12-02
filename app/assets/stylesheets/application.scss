@@ -17,6 +17,19 @@
 //bootstrap
 @import "bootstrap";
 
+//タブレット表示時
+@media (max-width: 1000px) {
+ p {
+   font-size: 25px;
+ }
+}
+
+//スマホ表示時
+@media (max-width: 500px) {
+ p {
+   font-size: 20px;
+ }
+}
 
 //フォント
 @font-face {
@@ -94,14 +107,15 @@ footer{
 
 //about.html
 .about {
-  background-image: image-url('img5.jpg');
-  background-size: cover;
-  width: 1000px;
-  height: 700px;
   position: relative;
-
 }
-.about::after {
+
+.about img {
+  width: 100%;
+  height: 100%;
+}
+
+.about img:after {
   content: '';
   position: absolute;
   top: 0;
