@@ -216,9 +216,9 @@ footer{
   position: absolute;                // 親要素を基準
 }
 
-//.hover:before + .balloon:after {
-  //display: block;
-//}
+.hover:before + .balloon:after {
+  display: block;
+}
 
 //_search.html
 .search_img {
